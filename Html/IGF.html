@@ -48,7 +48,47 @@
             <p>J'ai développé quatre fichiers principaux pour la réalisation de ce projet. Le fichier <strong>IGF.cs</strong> contient le code de l'interface utilisateur pour l'application de gestion de fichiers en C#. Le fichier <strong>Trie.cs</strong> inclut la classe "Trie", qui regroupe toutes les fonctions nécessaires pour vérifier et trier les fichiers, notamment la fonction "StartSorting", qui est utilisée pour déclencher le tri. Le fichier <strong>IGF.Designer.cs</strong> gère le style de l'interface. Enfin, le fichier <strong>extract_account.cs</strong> contient la fonction "ExtractAccountNumbers", utilisée à plusieurs reprises dans la classe "Trie" pour traiter les factures. Et pour terminer j'ai réaliser un dossier <strong>assets</strong> ou il a était mis toute les images que j'ai utilisées.</p>
             
             <div class="mission-step2">
-                <p>Dans mon fichier </p>
+                <p>
+                    Le code ci-dessous est un projet C# permettant de créer une <strong>interface utilisateur</strong> pour une application de gestion de fichiers. Cette interface permet à l'utilisateur de sélectionner et trier différents types de documents à partir de dossiers spécifiques.
+                </p>
+                
+                <p>
+                    <strong>1. Structure générale :</strong><br>
+                    Le code est organisé autour de la classe principale <code>IGF</code>, qui hérite de <code>Form</code>. Cette classe gère l'interface utilisateur et les interactions de l'utilisateur avec celle-ci.
+                </p>
+                
+                <p>
+                    <strong>2. Interface graphique :</strong><br>
+                    L'interface est composée de plusieurs éléments comme des <code>TextBox</code>, <code>Button</code>, <code>Label</code>, et <code>PictureBox</code>. Par exemple, la <code>TextBox</code> <em>sourceTextBox</em> permet à l'utilisateur d'entrer le chemin source, tandis que les <code>Button</code> comme <em>startButton</em> ou <em>browseButton</em> permettent de démarrer le tri ou de parcourir les dossiers.
+                </p>
+                
+                <p>
+                    <strong>3. Sélection des types de documents :</strong><br>
+                    Les différents types de documents (ODM, BL FACTURATION, FACTURE, etc.) sont gérés à travers des <code>CheckBox</code> et des <code>TextBox</code> associés. Chaque type de document a une case à cocher et une zone de texte où l'utilisateur peut indiquer le chemin spécifique.
+                </p>
+                
+                <p>
+                    <strong>4. Fonctionnalité de tri :</strong><br>
+                    La méthode <code>StartButton_Click</code> est déclenchée lorsque l'utilisateur clique sur le bouton "Démarrer". Cette méthode appelle la fonction <em>StartSorting</em> de la classe <code>Trie</code>, en passant les chemins sélectionnés pour trier les documents selon les types spécifiés. La fonction <em>GetDocumentTextBox</em> est utilisée pour récupérer les chemins correspondants à chaque type de document.
+                </p>
+                
+                <p>
+                    <strong>5. Gestion des événements :</strong><br>
+                    Des gestionnaires d'événements sont utilisés pour réagir aux actions de l'utilisateur. Par exemple, lorsque l'utilisateur coche ou décoche une case, la méthode <code>CheckBox_CheckedChanged</code> est appelée pour activer ou désactiver la <code>TextBox</code> associée.
+                </p>
+                
+                <p>
+                    <strong>6. Gestion des images :</strong><br>
+                    Deux images, une en haut et une en bas, sont ajoutées à l'interface via les <code>PictureBox</code> <em>headerPictureBox</em> et <em>footerPictureBox</em>. Elles améliorent l'aspect visuel de l'interface.
+                </p>
+                
+                <div class="image-container">
+                    <img src="../assets/IGF_base.jpg" alt="Image 3">
+                    <img src="../assets/IGF_base2.jpg" alt="Image 4">
+                    <img src="../assets/IGF_base3.jpg" alt="Image 5">
+                    <img src="../assets/IGF_base4.jpg" alt="Image 6">
+                    <img src="../assets/IGF_base5.jpg" alt="Image 7">
+                </div>
             </div>
         </div>
         
