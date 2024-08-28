@@ -41,8 +41,8 @@ h1 {
 }
 
 .mission-details {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 1000px; 
+    margin: 20px auto; 
     padding: 20px;
 }
 
@@ -61,6 +61,8 @@ h1 {
 }
 
 .mission-step {
+    max-width: 1000px; /* Augmenter la largeur maximale */
+    margin: 20px auto;
     background-color: var(--accent-color);
     padding: 20px;
     border-radius: 10px;
@@ -70,6 +72,8 @@ h1 {
 }
 
 .mission-step2 {
+    max-width: 1000px; /* Augmenter la largeur maximale */
+    margin: 20px auto;
     background-color: var(--accent-color2);
     padding: 20px;
     border-radius: 10px;
