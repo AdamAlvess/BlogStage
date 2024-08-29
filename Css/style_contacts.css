@@ -46,17 +46,20 @@ h1 {
     padding: 20px;
 }
 
-.image-container {
+.centered-content {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.image-container {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .image-container img {
     width: 80%;
-    text-align: center;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
