@@ -1,0 +1,62 @@
+:root {
+    --body-background-color: #ffffff;
+    --body-text-color: #222;
+    --primary-color: #dc3545;
+    --secondary-color: #dc3545;
+    --accent-color: #f1f1f1;
+    --accent-color2: #bababa;
+    --heading-color: #dc3545;
+}
+
+.dark-mode {
+    --body-background-color: #222;
+    --body-text-color: #ffffff;
+    --accent-color: #4a4949;
+    --accent-color2: #737373;
+    --heading-color: #e1a630;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--body-text-color);
+    background-color: var(--body-background-color);
+}
+
+header {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    font-size: 30px;
+    margin: 0 auto;
+}
+
+.mission-details {
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
