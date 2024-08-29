@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Css/style_missions.css">
+    <link rel="stylesheet" href="../Css/style_IGF.css">
     <link rel="stylesheet" href="../Css/style_nav.css">
-    <title>Blog</title>
+    <title>Mission IGF</title>
 </head>
 <body>
     <header>
@@ -22,13 +22,77 @@
                 </div>
             </ul>
         </nav>
-        <h1>Bienvenue sur mon Portfolio</h1>
-        <p>Le détails de la mission RDI</p>
+        <h1>Mission IGF - Interface de Gestion de Fichiers</h1>
+        <p>Détails et étapes du projet</p>
     </header>
+    
+    <section class="mission-details">
+        <h2>Introduction au projet RDI</h2>
+        <p>&nbsp;&nbsp;&nbsp;<strong>Le projet RDI</strong> consiste à créer une application mobile et PC permettant de générer des rapports d'intervention automatisés. L'utilisateur remplit un questionnaire et signe électroniquement, après quoi un PDF est automatiquement généré et prêt à être envoyé.</p>
 
-    <section class="RDI">
+        <div class="mission-step">
+            <h2>Réflexion sur les technologies a utilisées</h2>
+            <p>Pour ce projet on ne m'a pas demandé de réaliser une annalyse fonctionnelle donc j'ai seulement réflechie à la technologie que je peux utilisé et puis j'ai commencé le code.</p>
+            <p>&nbsp;&nbsp;&nbsp;Après réflexion, j'ai décidé d'utiliser <strong>Python</strong> pour ce projet, en raison de sa <em>diversité</em> et de son <em>complétude</em>. Les bibliothèques <em>Kivy.app</em>, <em>SQLite3</em>, ainsi que <em>JavaScript</em> pour la génération de PDF, ont été intégrées pour faciliter le développement.</p>
+            <p>&nbsp;&nbsp;&nbsp;Le projet a été codé en <strong>Python</strong> avec Kivy pour l'interface utilisateur. La structure de l'application comprend plusieurs écrans gérés par un <em>ScreenManager</em>, permettant à l'utilisateur de naviguer entre différentes sections telles que la saisie des informations et la signature numérique. Tout ce code est structuré en programmation orientée objet, ce qui signifie que j'utilise des classes pour définir des modèles d'objets. Chaque classe représente une entité distincte, avec ses propres attributs (propriétés) et méthodes (comportements), permettant ainsi de structurer le code de manière plus organisée et réutilisable. </p>
+            <p>&nbsp;&nbsp;&nbsp;Les données sont stockées localement dans une <strong>base de données SQLite</strong>. Chaque intervention est enregistrée avec des détails tels que le nom du client, le projet concerné, et les réponses au questionnaire. Cela permet de générer un rapport PDF à la fin du processus.</p>
+        </div>
         
+        <div class="mission-step">
+            <h2>Codage de l'Application</h2>
+            <p>L'architecture de mon projet est assez simple. Tout commence par un fichier principal (main) qui initialise l'ensemble des pages de l'application. Chaque page a son propre fichier dédié, qui contient à la fois la partie visuelle (le front-end) et la logique (le back-end). Le front-end est géré par l'initialisation de la classe de la page, tandis que le back-end comprend les fonctions associées, souvent déclenchées par des actions telles que le clic sur un bouton.</p>
+            <div class="mission-step2">
+                <h2><em>main.py</em></h2>
+                <p><strong>Fichier principal</strong> de l'application, <code>main.py</code> initialise et gère l'interface utilisateur de l'application Kivy.</p>
+                <p>Je commence par importer les modules nécessaires, y compris <code>kivy.app</code>, <code>kivy.uix.screenmanager</code>, et <code>kivy.core.window</code>, ainsi que les différentes pages de l'application.</p>            
+                <p><strong>Classe <code>MyScreenManager</code></strong>: Hérite de <code>ScreenManager</code> pour gérer les transitions entre les différents écrans de l'application.</p>
+                <p><strong>Classe <code>MainPage</code></strong>: Contient la méthode <code>build()</code> qui configure la fenêtre de l'application et crée un <code>ScreenManager</code>. Les écrans sont ajoutés à ce gestionnaire, et l'écran de départ est défini.</p>
+                <p><strong>Dimensions de la fenêtre</strong>: Définies avec <code>Window.size = (800, 600)</code> et une taille minimale pour empêcher le redimensionnement.</p>
+                <p><strong>Navigation</strong>: Chaque écran est ajouté au <code>ScreenManager</code>, et l'écran de départ est spécifié avec <code>sm.current = 'start_page'</code>.</p>  
+                <p><strong>Exécution</strong>: Le script vérifie si le fichier est exécuté directement avec <code>if __name__ == '__main__'</code> et lance l'application avec <code>MainPage().run()</code>.</p>
+                <div class="image-container">
+                    <img src="../assets/mainRDI1.jpg" alt="Image 1">
+                    <img src="../assets/mainRDI2.jpg" alt="Image 2">
+                </div>
+            </div>
+            <div class="mission-step2">
+                <h2><em>StartPage</em></h2>
+                <p><strong>La page de départ</strong> joue un rôle crucial dans l'initialisation de l'application. C'est ici que sont configurées les tables essentielles de la base de données, notamment la <code>table rdi</code>. Cette table stocke toutes les informations saisies par l'utilisateur, à l'exception des détails spécifiques de chaque intervention.</p>
+                <div class="image-container2">
+                    <img src="../assets/StartRDI.jpg" alt="Image 2">
+                </div>
+                <p>Les informations relatives à l'intervention sont conservées dans une <strong>table distincte</strong>, appelée <code>table intervention</code>. Cette séparation est intentionnelle, car elle permet de gérer plusieurs interventions dans un seul rapport sans complications. La table d'intervention est également initialisée au démarrage, facilitant ainsi la gestion des données pour chaque rapport.</p>
+                <p>Cette organisation est particulièrement avantageuse pour <em>générer des rapports multiples</em> sans avoir à redémarrer l'application ou à réutiliser les anciennes données. Lorsqu'un questionnaire est complété, l'utilisateur peut choisir de quitter l'application ou de revenir à la page de départ. En revenant à la page de départ, les tables sont automatiquement supprimées et recréées. Cette fonctionnalité garantit que de nouvelles informations peuvent être saisies et que chaque rapport est basé sur des données fraîches.</p>
+                <p>En résumé, cette approche permet une gestion fluide et efficace des rapports, tout en offrant la flexibilité nécessaire pour répondre aux besoins variés des utilisateurs.</p>
+                <div class="image-container">
+                    <img src="../assets/StartRDI2.jpg" alt="Image 3">
+                    <img src="../assets/StartRDI3.jpg" alt="Image 4">
+                </div>
+                
+            </div>
+            
+            
+        </div>
+        
+        <div class="mission-step">
+            <h2>Présentation du Projet à la Direction</h2>
+            <p>La présentation du projet à la direction est une étape cruciale pour obtenir l'approbation finale et les éventuelles modifications nécessaires avant le déploiement du logiciel dans l'entreprise. Cette présentation permet de montrer les fonctionnalités du logiciel, de discuter des avantages et des inconvénients, et de recueillir les commentaires et les suggestions des parties prenantes.</p>
+            <p>Voilà donc mon logiciel terminer :</p>
+            <div class="image-container">
+                <img src="../assets/IGF.jpg" alt="Image 8">
+            </div>
+            <p>Et voilà une démonstration de mon application avec des exemples de fichiers à trier dans l'architecture de l'entrerpise retranscrit sur mon pc.</p>
+            <video controls>
+                <source src="../assets/VideoRDI.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="mission-step">
+            <h2>Mise en Place du Logiciel dans l'Entreprise</h2>
+            <p>Pour ce qui est de la mise en place de mon logiciel j'ai tout simplement transmit mon dossier de mon application en un installeur afin de le transférer à la secrétaire qui a ensuite lancer cette installeur qui à installer le logiciel sur son pc.</p>
+        </div>
     </section>
+    
 
     <script src="../JS/script.js"></script>
 </body>

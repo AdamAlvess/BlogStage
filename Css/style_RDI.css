@@ -4,12 +4,16 @@
     --primary-color: #dc3545;
     --secondary-color: #dc3545;
     --accent-color: #f1f1f1;
+    --accent-color2: #bababa;
+    --heading-color: #dc3545;
 }
 
 .dark-mode {
-    --body-background-color: #222; 
-    --body-text-color: #ffffff; 
+    --body-background-color: #222;
+    --body-text-color: #ffffff;
     --accent-color: #4a4949;
+    --accent-color2: #737373;
+    --heading-color: #e1a630;
 }
 
 body {
@@ -17,7 +21,7 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: var(--body-text-color); 
+    color: var(--body-text-color);
     background-color: var(--body-background-color);
 }
 
@@ -36,3 +40,64 @@ h1 {
     margin: 0 auto;
 }
 
+.mission-details {
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px;
+}
+
+.image-container, .image-container2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.image-container2 img {
+    width: 70%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.mission-step {
+    max-width: 1200px; /* Augmenter la largeur maximale */
+    margin: 20px auto;
+    background-color: var(--accent-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.mission-step2 {
+    max-width: 1200px; /* Augmenter la largeur maximale */
+    margin: 20px auto;
+    background-color: var(--accent-color2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.mission-step:hover {
+    transform: translateY(-5px);
+}
+
+.mission-step h2 {
+    color: var(--heading-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.mission-step p {
+    font-size: 16px;
+    margin: 0;
+}
