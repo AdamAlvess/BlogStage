@@ -101,3 +101,12 @@ h1 {
     font-size: 16px;
     margin: 0;
 }
+
+.expandable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.expandable:hover {
+    transform: scale(1.05);
+}

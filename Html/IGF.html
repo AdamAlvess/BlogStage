@@ -32,10 +32,14 @@
             <p>La réalisation d'une analyse fonctionnelle permet de réfléchir et savoir quelle technologie est la plus adaptée pour réaliser ce logiciel et de voir la manière de tri la plus efficace selon la demande afin de ne pas perdre de temps lors de la réalisation du logiciel.</p>
             <p>Cette section représente une part essentielle de mon analyse fonctionnelle, où j'examine en profondeur les technologies disponibles, leur application, leur pertinence, ainsi que la stratégie que j'adopterai pour réaliser mon logiciel.</p>
             <div class="image-container">
-                <img src="../assets/annalyse_fonctionnelle_IGF.jpg" alt="Image 1">
-                <img src="../assets/annalyse_fonctionnelle_IGF2.jpg" alt="Image 2">
+                <img src="../assets/annalyse_fonctionnelle_IGF.jpg" alt="Image 1" class="expandable">
+                <img src="../assets/annalyse_fonctionnelle_IGF2.jpg" alt="Image 2" class="expandable">
             </div>
-            
+            <div id="imageModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div id="caption"></div>
+            </div>
             <div class="mission-step2">
                 <p>&nbsp;&nbsp;&nbsp;Pour coder mon application, j'ai dû choisir un langage que l'entreprise connaissait déjà. Parmi ceux qui m'ont été présentés, j'ai opté pour le C#. Ce langage est très complet et offre de nombreuses bibliothèques utiles pour mon projet, comme System.IO pour la gestion des entrées/sorties, notamment la manipulation des fichiers et des répertoires, et System.Windows.Forms pour créer des applications Windows Forms avec de nombreuses classes pour l'interface graphique, entre autres.</p>
                 <p>&nbsp;&nbsp;&nbsp;En ce qui concerne la conception, j'ai opté pour une interface simple et intuitive. L'utilisateur doit simplement sélectionner le dossier contenant les fichiers à organiser et en utilisant une nomenclature de fichiers spécifique adaptée aux différents types de fichiers de l'entreprise, il sera possible de déplacer automatiquement chaque élément vers le bon emplacement. Il est également possible de choisir manuellement un autre chemin pour certains types de fichiers en décochant la case correspondante et en spécifiant le répertoire souhaité.</p> 
@@ -62,8 +66,8 @@
                     L'interface est composée de plusieurs éléments comme des <code>TextBox</code>, <code>Button</code>, <code>Label</code>, et <code>PictureBox</code>. Par exemple, la <code>TextBox</code> <em>sourceTextBox</em> permet à l'utilisateur d'entrer le chemin source, tandis que les <code>Button</code> comme <em>startButton</em> ou <em>browseButton</em> permettent de démarrer le tri ou de parcourir les dossiers.
                 </p>
                 <div class="image-container">
-                    <img src="../assets/IGF_base.jpg" alt="Image 3">
-                    <img src="../assets/IGF_base2.jpg" alt="Image 4">
+                    <img src="../assets/IGF_base.jpg" alt="Image 3" class="expandable">
+                    <img src="../assets/IGF_base2.jpg" alt="Image 4" class="expandable">
                 </div>
                 <p>
                     <strong>3. Sélection des types de documents :</strong><br>
@@ -71,7 +75,7 @@
                 </p>
                 
                 <div class="image-container">
-                    <img src="../assets/IGF_base4.jpg" alt="Image 6">
+                    <img src="../assets/IGF_base4.jpg" alt="Image 6" class="expandable">
                 </div>
                 <p>
                     <strong>4. Fonctionnalité de tri :</strong><br>
@@ -83,8 +87,8 @@
                     Des gestionnaires d'événements sont utilisés pour réagir aux actions de l'utilisateur. Par exemple, lorsque l'utilisateur coche ou décoche une case, la méthode <code>CheckBox_CheckedChanged</code> est appelée pour activer ou désactiver la <code>TextBox</code> associée.
                 </p>
                 <div class="image-container">
-                    <img src="../assets/IGF_base3.jpg" alt="Image 5">
-                    <img src="../assets/IGF_base5.jpg" alt="Image 7">
+                    <img src="../assets/IGF_base3.jpg" alt="Image 5" class="expandable">
+                    <img src="../assets/IGF_base5.jpg" alt="Image 7" class="expandable">
                 </div>
                 <p>
                     <strong>6. Gestion des images :</strong><br>
@@ -96,7 +100,7 @@
                     Le code ci-dessous permet le trie des fichiers voulu. Le fichier <strong>Trie.cs</strong> est vraiment le back de mon application c'est la où toute ma logique ce trouve avec toute les étapes ce font après l'appuie du bouton "Démarrer".
                 </p>
                 <div class="image-container2">
-                    <img src="../assets/trie1.jpg" alt="Image 9">
+                    <img src="../assets/trie1.jpg" alt="Image 9" class="expandable">
                 </div>
                 <p>
                     La fonction <strong>StartSorting</strong> est utilisée pour trier et classer les fichiers d'un dossier source vers différents dossiers de destination en fonction de leur type. Elle commence par vérifier si le dossier source existe. Si ce n'est pas le cas, un message d'erreur est ajouté à la <em>TextBox</em> <strong>messageBox</strong>, et la fonction se termine. 
@@ -110,7 +114,7 @@
                 </p>
                 <p>Pour le reste je vais expliquer pour les factures car c'est un type de fichier spécifique mais pour le reste j'expliquerai seulement un pour avoir la logique de tous.</p>
                 <div class="image-container2">
-                    <img src="../assets/trie2.jpg" alt="Image 10">
+                    <img src="../assets/trie2.jpg" alt="Image 10" class="expandable">
                 </div>
                 <p>
                     La fonction <code>ClassifyFact</code> est utilisée pour classifier et déplacer les fichiers de type "facture" vers un répertoire de destination approprié. Elle prend en paramètre un objet <code>FileInfo</code> représentant le fichier à classer, une <code>TextBox</code> pour afficher les messages d'erreur ou de réussite, une <code>CheckBox</code> qui détermine si le fichier doit être traité, et enfin le chemin du répertoire de destination.
@@ -124,7 +128,7 @@
                     Si la case n'est pas cochée, la fonction vérifie si un chemin de destination alternatif est spécifié. Si ce n'est pas le cas, un message d'erreur est affiché et le processus est interrompu. Si le fichier existe, il est copié vers ce chemin alternatif. Si le fichier n'existe pas, un message d'erreur est ajouté à la <code>TextBox</code> pour informer l'utilisateur.
                 </p>
                 <div class="image-container2">
-                    <img src="../assets/trie3.jpg" alt="Image 11">
+                    <img src="../assets/trie3.jpg" alt="Image 11" class="expandable">
                 </div>
                 <p>
                     La fonction <code>ClassifyBLFO</code> est conçue pour classifier et déplacer les fichiers de type "Bon de Livraison Fournisseur" (BLFO) vers un répertoire de destination spécifique. Elle prend en paramètres un objet <code>FileInfo</code> représentant le fichier à traiter, une <code>TextBox</code> pour afficher les messages d'erreur ou de confirmation, une <code>CheckBox</code> qui indique si le fichier doit être traité, et enfin, le chemin de destination pour les fichiers BLFO.
@@ -138,7 +142,7 @@
                     Si la <code>CheckBox</code> n'est pas cochée, la fonction vérifie si un chemin de destination alternatif pour les BLFO a été spécifié. Si aucun chemin n'est fourni, le processus est interrompu et un message d'erreur est affiché. Si le fichier existe, il est copié vers ce chemin alternatif. Si le fichier n'existe pas, un message d'erreur est ajouté à la <code>TextBox</code> pour alerter l'utilisateur.
                 </p>
                 <div class="image-container2">
-                    <img src="../assets/trie4.jpg" alt="Image 12">
+                    <img src="../assets/trie4.jpg" alt="Image 12" class="expandable">
                 </div>
                 <p>
                     La fonction <code>IsInvoiceFact</code> est utilisée pour déterminer si un fichier donné est une facture ou un avoir. Elle prend en entrée un objet <code>FileInfo</code> représentant le fichier et une <code>CheckBox</code> associée. La fonction convertit le nom du fichier en minuscules pour faciliter la recherche et vérifie ensuite si le nom du fichier contient les chaînes "fact" ou "avoir". Si l'une de ces chaînes est présente, la fonction retourne <code>true</code>, indiquant que le fichier est bien une facture ou un avoir.
@@ -152,7 +156,7 @@
                     Pour les autres types de fichiers, la même logique est appliquée. Chaque fonction vérifie si le nom du fichier contient une chaîne spécifique correspondant au type de document recherché. Par exemple, pour identifier un bon de livraison fournisseur (BLFO), la fonction vérifiera la présence de termes spécifiques dans le nom du fichier, en suivant le même principe que <code>IsInvoiceDevis</code>.
                 </p>
                 <div class="image-container2">
-                    <img src="../assets/trie5.jpg" alt="Image 13">
+                    <img src="../assets/trie5.jpg" alt="Image 13" class="expandable">
                 </div>
                 <p>
                     La fonction <code>GetDefaultFactureDestination</code> est conçue pour déterminer le chemin de destination par défaut où une facture doit être copiée. Cette fonction prend en entrée un numéro de compte (<code>accountNumber</code>) et une <code>TextBox</code> (<code>messageBox</code>) pour afficher des messages. 
@@ -188,7 +192,7 @@
                     Si aucun tiret n'est trouvé dans le nom du fichier, la fonction affiche un message d'erreur dans la <code>TextBox</code> et retourne <code>null</code>, indiquant qu'il n'a pas été possible d'extraire le numéro de compte.
                 </p>
                 <div class="image-container2">
-                    <img src="../assets/trie6.jpg" alt="Image 14">
+                    <img src="../assets/trie6.jpg" alt="Image 14" class="expandable">
                 </div>
                 <p>
                     La fonction <code>GetDefaultBLFODestination</code> est conçue pour localiser le chemin de destination par défaut où un bon de livraison fournisseur (BLFO) doit être copié. Elle prend en entrée un numéro de compte (<code>accountNumber</code>) et une <code>TextBox</code> (<code>messageBox</code>) pour afficher des messages d'erreur ou d'information.
@@ -217,7 +221,7 @@
             <p>La présentation du projet à la direction est une étape cruciale pour obtenir l'approbation finale et les éventuelles modifications nécessaires avant le déploiement du logiciel dans l'entreprise. Cette présentation permet de montrer les fonctionnalités du logiciel, de discuter des avantages et des inconvénients, et de recueillir les commentaires et les suggestions des parties prenantes.</p>
             <p>Voilà donc mon logiciel terminer :</p>
             <div class="image-container">
-                <img src="../assets/IGF.jpg" alt="Image 8">
+                <img src="../assets/IGF.jpg" alt="Image 8" class="expandable">
             </div>
             <p>Et voilà une démonstration de mon application avec des exemples de fichiers à trier dans l'architecture de l'entrerpise retranscrit sur mon pc.</p>
             <video controls>

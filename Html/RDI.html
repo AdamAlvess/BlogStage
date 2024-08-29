@@ -51,37 +51,132 @@
                 <p><strong>Navigation</strong>: Chaque écran est ajouté au <code>ScreenManager</code>, et l'écran de départ est spécifié avec <code>sm.current = 'start_page'</code>.</p>  
                 <p><strong>Exécution</strong>: Le script vérifie si le fichier est exécuté directement avec <code>if __name__ == '__main__'</code> et lance l'application avec <code>MainPage().run()</code>.</p>
                 <div class="image-container">
-                    <img src="../assets/mainRDI1.jpg" alt="Image 1">
-                    <img src="../assets/mainRDI2.jpg" alt="Image 2">
+                    <img src="../assets/mainRDI1.jpg" alt="Image 1" class="expandable">
+                    <img src="../assets/mainRDI2.jpg" alt="Image 2" class="expandable">
                 </div>
             </div>
             <div class="mission-step2">
                 <h2><em>StartPage</em></h2>
                 <p><strong>La page de départ</strong> joue un rôle crucial dans l'initialisation de l'application. C'est ici que sont configurées les tables essentielles de la base de données, notamment la <code>table rdi</code>. Cette table stocke toutes les informations saisies par l'utilisateur, à l'exception des détails spécifiques de chaque intervention.</p>
                 <div class="image-container2">
-                    <img src="../assets/StartRDI.jpg" alt="Image 2">
+                    <img src="../assets/StartRDI.jpg" alt="Image 3" class="expandable">
                 </div>
                 <p>Les informations relatives à l'intervention sont conservées dans une <strong>table distincte</strong>, appelée <code>table intervention</code>. Cette séparation est intentionnelle, car elle permet de gérer plusieurs interventions dans un seul rapport sans complications. La table d'intervention est également initialisée au démarrage, facilitant ainsi la gestion des données pour chaque rapport.</p>
                 <p>Cette organisation est particulièrement avantageuse pour <em>générer des rapports multiples</em> sans avoir à redémarrer l'application ou à réutiliser les anciennes données. Lorsqu'un questionnaire est complété, l'utilisateur peut choisir de quitter l'application ou de revenir à la page de départ. En revenant à la page de départ, les tables sont automatiquement supprimées et recréées. Cette fonctionnalité garantit que de nouvelles informations peuvent être saisies et que chaque rapport est basé sur des données fraîches.</p>
                 <p>En résumé, cette approche permet une gestion fluide et efficace des rapports, tout en offrant la flexibilité nécessaire pour répondre aux besoins variés des utilisateurs.</p>
                 <div class="image-container">
-                    <img src="../assets/StartRDI2.jpg" alt="Image 3">
-                    <img src="../assets/StartRDI3.jpg" alt="Image 4">
+                    <img src="../assets/StartRDI2.jpg" alt="Image 4" class="expandable">
+                    <img src="../assets/StartRDI3.jpg" alt="Image 5" class="expandable">
                 </div>
-                
             </div>
-            
-            
+            <div class="mission-step2">
+                <h2><em>Autre Page</em></h2>
+                <p><strong>Les autres pages</strong> suivent une logique similaire. Chaque page commence par l'initialisation de l'interface, avec des <em>TextInput</em> qui permettent de saisir les réponses, et la question spécifique au questionnaire correspondant à cette page. Un bouton <em>Suivant</em> permet de passer à la question suivante, tandis qu'un bouton <em>Retour</em> offre la possibilité de revenir à la question précédente si nécessaire.</p>
+                <div class="image-container2">
+                    <img src="../assets/PageRDI.png" alt="Image 6" class="expandable">
+                </div>
+                <p>Enfin, nous avons deux fonctions essentielles. La fonction <strong>on_back_clicked</strong> permet de revenir à la page précédente en cliquant sur le bouton <em>Retour</em>, en modifiant la variable <code>sm.current</code> pour qu'elle corresponde au nom de la page précédente. La fonction <strong>on_next_clicked</strong> enregistre le texte saisi dans la variable du tableau <strong>rdi</strong> correspondant au numéro de la question, puis passe à la page suivante en mettant également à jour la variable <em>sm.current</em>.</p>
+                <div class="image-container2">
+                    <img src="../assets/PageRDI2.jpg" alt="Image 7" class="expandable">
+                </div>
+            </div>
+            <div class="mission-step2">
+                <h2><em>Page Signature</em></h2>
+                <p><strong>La page de signature</strong> revêt une grande importance. Sur cette page, deux zones permettent à l'utilisateur de créer une signature à l'aide de sa souris. Une fois la signature réalisée, elle est enregistrée au format PNG et stockée dans la table `rdi` de ma base de données. Pour cela, j'ai utilisé un canvas, défini dans la classe <strong>SignatureCanvas</strong>, où j'ai d'abord configuré la forme et le style du canvas. Ensuite, j'ai implémenté quatre fonctions pour gérer le processus de signature. Ces fonctions assurent la mise à jour visuelle du canvas, ainsi que l'interaction avec l'utilisateur pour dessiner la signature.</p>
+                <div class="image-container2">
+                    <img src="../assets/SignatureRDI.jpg" alt="Image 8" class="expandable">
+                </div>
+                <p>Nous avons aussi dans ce fichier la class <strong>SignaturePage</strong> qui est a plus d'éléments donc je vais l'expliquer plus précisement.</p>
+                <h3>Initialisation et Interface Utilisateur</h3>
+                <p>
+                    La classe <code>SignaturePage</code> hérite de <code>Screen</code> et constitue une interface de saisie de signatures. Lors de l'initialisation, un fond blanc est appliqué à la page, et le logo de l'entreprise est placé en haut à droite pour une identification visuelle. Ensuite, divers éléments sont ajoutés pour permettre la saisie d'informations et la création de signatures, notamment des champs de texte pour le nom du client et de l'intervenant, ainsi que des zones de dessin (<code>SignatureCanvas</code>) pour capturer les signatures.
+                </p>
+
+                <h3>Gestion des Signatures</h3>
+                <p>
+                    Deux instances de <code>SignatureCanvas</code> sont utilisées pour collecter les signatures du client et de l'intervenant. Une fois que les signatures sont saisies, elles sont enregistrées au format PNG via la fonction <code>on_next_clicked</code>. Cette fonction génère les fichiers image des signatures et redimensionne ces fichiers pour garantir une qualité et une taille optimales.
+                </p>
+                <div class="image-container2">
+                    <img src="../assets/SignatureRDI2.jpg" alt="Image 9" class="expandable">
+                </div>
+                <h3>Enregistrement dans la Base de Données</h3>
+                <p>
+                    Une fois les signatures capturées, la fonction <code>on_next_clicked</code> se charge également de mettre à jour les enregistrements dans une base de données SQLite. Elle récupère d'abord l'ID de la dernière entrée dans la table <code>rdi</code>, puis met à jour cette entrée avec les noms et les chemins des fichiers de signature, ainsi que la date actuelle, formatée en français.
+                </p>
+                <div class="image-container">
+                    <img src="../assets/SignatureRDI3.jpg" alt="Image 10" class="expandable">
+                    <img src="../assets/SignatureRDI4.jpg" alt="Image 11" class="expandable">
+                </div>
+                <h3>Navigation et Gestion des Boutons</h3>
+                <p>
+                    La classe comporte deux boutons principaux : un bouton "Retour" qui permet à l'utilisateur de revenir à l'écran précédent, et un bouton "Générer pdf" qui déclenche le processus d'enregistrement des signatures et de mise à jour de la base de données. Le bouton "Retour" est lié à la fonction <code>on_back_clicked</code>, tandis que le bouton "Générer pdf" est lié à la fonction <code>on_next_clicked</code>, qui gère l'ensemble du processus de sauvegarde des données.
+                </p>
+
+                <h3>Redimensionnement des Images</h3>
+                <p>
+                    La méthode <code>resize_image</code> est utilisée pour ajuster la taille des images de signature avant leur stockage final. Elle redimensionne chaque image à des dimensions spécifiques pour assurer une intégration cohérente dans les documents ou les bases de données.
+                </p>
+                <div class="image-container">
+                    <img src="../assets/SignatureRDI5.jpg" alt="Image 12" class="expandable">
+                </div>
+            </div>
+            <div class="mission-step2">
+                <h2><em>JS</em></h2>
+                <p>Pour garantir la génération correcte d'un PDF contenant toutes les informations nécessaires, un fichier <strong>JavaScript</strong> dédié est indispensable.</p>
+                <p><strong>Explication du fichier <code>intervention.js</code> :</strong></p>
+                <p>Le fichier <code>intervention.js</code> est un script Node.js qui automatise la génération de rapports PDF à partir des données extraites d'une base de données SQLite. Voici un aperçu de son fonctionnement :</p>
+                <ol>
+                    <li>
+                        <strong>Imports des modules nécessaires :</strong><br>
+                        <ul>
+                            <li><code>puppeteer</code> pour automatiser la génération de PDF via un navigateur sans interface graphique.</li>
+                            <li><code>sqlite3</code> pour interagir avec une base de données SQLite.</li>
+                            <li><code>fs</code> pour la manipulation de fichiers.</li>
+                            <li><code>child_process</code> pour exécuter des commandes système, comme l'ouverture du PDF généré.</li>
+                            <li><code>path</code> pour la gestion des chemins de fichiers.</li>
+                        </ul>
+                    </li>
+                    <div class="image-container">
+                        <img src="../assets/intervention1.jpg" alt="Image 13" class="expandable">
+                    </div>
+                    <li>
+                        <strong>Conversion d'images en base64 :</strong><br>
+                        La fonction <code>imageToBase64</code> lit les fichiers d'image (par exemple, des signatures) et les convertit en chaîne base64, ce qui permet de les intégrer directement dans le document HTML.
+                    </li>
+                    <div class="image-container">
+                        <img src="../assets/intervention2.jpg" alt="Image 14" class="expandable">
+                    </div>
+                    <li>
+                        <strong>Récupération des données depuis la base de données :</strong><br>
+                        La fonction <code>fetchDataFromDB</code> se connecte à la base de données <code>DbRDI.db</code>, puis récupère les données des tables <code>rdi</code> et <code>intervention</code>. Les images de signature sont converties en base64 avant d'être intégrées aux données récupérées.
+                    </li>
+                    <div class="image-container">
+                        <img src="../assets/intervention3.jpg" alt="Image 15" class="expandable">
+                    </div>
+                    <li>
+                        <strong>Génération du PDF :</strong><br>
+                        La fonction <code>generatePDF</code> génère un contenu HTML à partir des données récupérées grâce à la fonction <code>generateHtmlFromData</code>. Le navigateur sans interface lancé par Puppeteer rend ce contenu HTML, puis le sauvegarde sous forme de fichier PDF. Le PDF est stocké dans un répertoire dédié (créé si nécessaire) et son nom est construit à partir des informations <code>Num_Affaire</code> et <code>Num_Intervention</code>.
+                    </li>
+                    <div class="image-container">
+                        <img src="../assets/intervention4.jpg" alt="Image 16" class="expandable">
+                    </div>
+                    <li>
+                        <strong>Création du contenu HTML :</strong><br>
+                        La fonction <code>generateHtmlFromData</code> structure les données dans une page HTML. Elle comprend plusieurs tableaux pour afficher des informations comme les détails de l'intervention, les modes d'intervention, et les signatures. Chaque intervention est représentée par un tableau avec des champs spécifiques (dates, heures, intervenants, etc.) et les signatures des parties impliquées sont intégrées en base64.
+                    </li>
+                
+                    <li>
+                        <strong>Exécution du script :</strong><br>
+                        Le script se termine par un appel à <code>generatePDF</code> qui génère et ouvre le PDF une fois créé.
+                    </li>
+                </ol>
+            </div>
         </div>
         
         <div class="mission-step">
             <h2>Présentation du Projet à la Direction</h2>
             <p>La présentation du projet à la direction est une étape cruciale pour obtenir l'approbation finale et les éventuelles modifications nécessaires avant le déploiement du logiciel dans l'entreprise. Cette présentation permet de montrer les fonctionnalités du logiciel, de discuter des avantages et des inconvénients, et de recueillir les commentaires et les suggestions des parties prenantes.</p>
-            <p>Voilà donc mon logiciel terminer :</p>
-            <div class="image-container">
-                <img src="../assets/IGF.jpg" alt="Image 8">
-            </div>
-            <p>Et voilà une démonstration de mon application avec des exemples de fichiers à trier dans l'architecture de l'entrerpise retranscrit sur mon pc.</p>
+            <p>Voilà donc mon logiciel terminé sous forme de vidéo explicative :</p>
             <video controls>
                 <source src="../assets/VideoRDI.mp4" type="video/mp4">
             </video>
@@ -89,10 +184,9 @@
         
         <div class="mission-step">
             <h2>Mise en Place du Logiciel dans l'Entreprise</h2>
-            <p>Pour ce qui est de la mise en place de mon logiciel j'ai tout simplement transmit mon dossier de mon application en un installeur afin de le transférer à la secrétaire qui a ensuite lancer cette installeur qui à installer le logiciel sur son pc.</p>
+            <p>En ce qui concerne la mise en place de mon logiciel, j'ai tout simplement transformé mon dossier de l'application en un installateur afin de le transférer aux employés, qui ont ensuite lancé cet installateur, permettant ainsi d'installer le logiciel sur leur PC.</p>
         </div>
-    </section>
-    
+    </section>  
 
     <script src="../JS/script.js"></script>
 </body>
