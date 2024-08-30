@@ -159,3 +159,17 @@ h1 {
 .expandable:hover {
     transform: scale(1.05);
 }
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.video-container video {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

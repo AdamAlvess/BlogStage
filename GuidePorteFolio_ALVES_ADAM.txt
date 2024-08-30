@@ -1,0 +1,13 @@
+Guide d'accès au blog d'Adam Alves
+
+Bonjour à tous,
+
+Je suis heureux de vous accueillir sur mon blog ! Voici comment y accéder en quelques étapes simples :
+
+- Ouvrez votre navigateur préféré (Chrome, Firefox, Safari, etc.).
+- Dans la barre d'adresse, tapez l'URL suivante : https://adamalvess.github.io/BlogStage/
+- Appuyez sur "Entrée" pour accéder au site.
+- Et voilà, vous serez sur la page d'accueil !
+Si vous souhaitez suivre l'ensemble de mon avancement durant la réalisation de mon blog, je vous invite à consulter mon dépôt Git qui se trouve à cette URL : https://github.com/AdamAlvess/BlogStage.git
+
+Je vous souhaite une excellente navigation et découverte de mon site ! J'espère que vous apprécierez le contenu que j'y partage !
